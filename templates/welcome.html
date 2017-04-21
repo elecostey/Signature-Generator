@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+{% block content1 %}
+<div id="home-container-outer" class="container" style="padding-top: 20px; ">
+
+  <div id="home-container" class="jumbotron" style="min-height: 190px; padding-left: 20px; padding-right: 20px; padding-top:30px; padding-bottom:30px;   background-color: #e6e6e6; ">
+  <br>
+  <br>
+  <br>
+    <div style="    top: 50%;
+    transform: translateY(-100%);
+    position: relative;">
+      <form action="/form" method="POST" class="form-horizontal">
+        <div class="form-group" style="margin-bottom:0px;">
+          <div class=" col-centered col-sm-6 col-md-5 col-lg-4">
+            <label style="color:#5a5a5a;" for="password">Please enter the password to access the app:</label>
+            <input type="password" class="form-control"  id="password" name="password">
+          </div>
+            <div class=" col-centered col-sm-6 col-md-5 col-lg-4">
+             <div id="alert-message" class="text-center alert alert-danger" style="padding: 6px 10px; margin-bottom:10px; margin-top: 10px;">{{error}}</div>
+            </div>
+          <div class="text-center">
+            <button class="btn btn-default" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

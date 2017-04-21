@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% block content2 %}
+
+<div class="container" style="padding-top: 20px;">
+  <div style="margin-bottom:20px;">
+    <form>
+      <div class="form-group">
+        <label for="code">HTML code:</label>
+        <textarea class="form-control" rows="20" id="code">{{signature}}</textarea>
+      </div>
+    </form>
+  </div>
+
+
+<div class="jumbotron" style="padding-top:30px; padding-bottom:15px; background-color: rgba(230, 230, 230, 1); ">
+  <div>
+    <p style="margin-bottom: 5px;font-size: 18px;">1. Copy the HTML code by clicking this button :</p>
+    <button class="btn btn-default" type="button" data-toggle="tooltip" data-placement="bottom" data-clipboard-target="#code">Copy code</button>
+  </div>
+
+  <p style="margin-top: 15px; font-size: 18px;">
+    2. Open Notepad.
+  </p>
+
+  <p style="font-size: 18px;">
+    3. Paste in Notepad.
+  </p>
+
+  <p style="font-size: 18px;">
+    4. Save file as "signature.html" or "yourname-signature.html"
+  </p>
+
+  </div>
+</div>
+{% endblock %}

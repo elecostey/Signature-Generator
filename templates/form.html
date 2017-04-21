@@ -1,0 +1,135 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="container" style="padding-top: 20px;">
+  <div class="row" style="margin-left: 0; margin-right:0; padding-top: 20px; padding-left: 20px; background-color: rgb(230, 230, 230); padding-right: 20px; margin-bottom: 20px; border-radius: 6px;">
+  <div class="col-md-6">
+    <div class="">
+    <form action="/preview" class="form-horizontal" method="POST">
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-4 col-lg-3" for="input-1">Name</label>
+          <div class="col-sm-6 col-md-7 col-lg-8">
+            <input class="form-control" type="text" id="input-1" name="name" value="{{name}}" placeholder="e.g. John" >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-4 col-lg-3" for="input-2">Surname</label>
+          <div class="col-sm-6 col-md-7 col-lg-8">
+            <input class="form-control" type="text" id="input-2" name="surname" value="{{surname}}" placeholder="e.g. Smith" >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-4 col-lg-3" for="input-3">Job title</label>
+          <div class="col-sm-6 col-md-7 col-lg-8">
+            <input class="form-control" type="text" id="input-3" name="job_title" value="{{job_title}}" placeholder="e.g. Sales Manager">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-4 col-lg-3" for="input-4">Company name</label>
+          <div class="col-sm-6 col-md-7 col-lg-8">
+            <input class="form-control" type="text" id="input-4" name="company_name" value="{{company_name}}" placeholder="e.g. PORSCHE INTER AUTO d.o.o.">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-4 col-lg-3" for="input-5">Address</label>
+          <div class="col-sm-6 col-md-7 col-lg-8">
+            <input class="form-control" type="text" id="input-5" name="address" value="{{address}}" placeholder="e.g. V. Škorpika 21-23, HR-10090 Zagreb">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label style="padding-left:0;" class="control-label col-sm-3 col-md-4 col-lg-3" for="input-6">Landline phone</label>
+          <div class="col-sm-6 col-md-7 col-lg-8">
+            <input class="form-control" type="text" id="input-6" name="tel" value="{{tel}}" placeholder="e.g. +385 (0)1 3473 846">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-4 col-lg-3" for="input-7">Mobile</label>
+          <div class="col-sm-6 col-md-7 col-lg-8">
+            <input class="form-control" type="text" id="input-7" name="mob" value="{{mob}}" placeholder="e.g. +385 (0)99 343 80 46">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-4 col-lg-3" for="input-8">Email</label>
+          <div class="col-sm-6 col-md-7 col-lg-8">
+            <input class="form-control" type="email" id="input-8" name="email" value="{{email}}" placeholder="e.g. mail@gmail.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-4 col-lg-3" for="input-9">Picture URL</label>
+          <div class="col-sm-6 col-md-7 col-lg-8">
+            <input class="form-control" type="text" id="input-9" name="picture"  value="{{picture}}"   placeholder="e.g. https://s23.postimg.org/pfo2slqyz/picture.png">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-4 col-lg-3" for="input-10">Branch</label>
+          <div class="col-sm-6 col-md-7 col-lg-8">
+            <select name="branch" class="form-control" id="input-10" >
+              <option value="no branch" {% if user_branch == 'no branch' %} selected="selected" {% endif %}>Porsche Inter Auto</option>
+              <option value="seat" {% if user_branch == 'seat' %} selected="selected" {% endif %} >Seat</option>
+              <option value="audi" {% if user_branch == 'audi' %} selected="selected" {% endif %}>Audi</option>
+              <option value="volkswagen" {% if user_branch == 'volkswagen' %} selected="selected" {% endif %}>Volkswagen</option>
+              <option value="gospodarska vozila" {% if user_branch == 'gospodarska vozila' %} selected="selected" {% endif %}>Gospodarska Vozila</option>
+              <option value="dasweltauto" {% if user_branch == 'dasweltauto' %} selected="selected" {% endif %}>DasWeltAuto</option>
+              <option value="skoda" {% if user_branch == 'skoda' %} selected="selected" {% endif %}>Skoda</option>
+              <option value="porsche" {% if user_branch == 'porsche' %} selected="selected" {% endif %}>Porsche</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-md-offset-4 col-lg-offset-3 col-sm-10">
+            <button class="btn btn-default"  type="submit" name="submit" value="preview">Preview</button>
+            <button class="btn btn-default" formaction="/download" type="submit" name="submit" value="download">Download</button>
+          </div>
+        </div>
+
+        <div id="alert-message" class=" col-sm-12 col-md-11 col-lg-11 alert alert-danger" style="padding: 6px 10px; margin-bottom: 0; margin-top: 5px;">{{error}}</div>
+
+
+      <br>
+      <br>
+    </form>
+    </div>
+  <br>
+  </div>
+
+    <div class="col-md-6" style="overflow: auto; background-color: white; height: 580px; border: 1px solid #ccc; border-radius: 5px; padding:0; margin-bottom:20px;">
+      {% block content3 %}
+      <div style="overflow: auto; background-color: white; width: 100%; height: 578px; border-radius: 5px; padding: 0 18%;">
+        <div style="color: #a2a2a2; font-size:20px; text-align: center; marin-top:0; margin-bottom:0; top: 50%; transform: translateY(-50%); position: relative;">Fill in all the fields and click on Preview to see the signature </div>
+      </div>
+
+      {% endblock %}
+    </div>
+  </div>
+
+  <div class="jumbotron" style="padding-left: 20px; padding-right: 20px; padding-top:30px; padding-bottom:15px; background-color: rgba(230, 230, 230, 0.85); ">
+    <div class="row">
+    <div class=" col-md-6  " >
+      <p style="font-size: 18px;" >The picture must be 100px width and 137px height</p>
+      <p style="font-size: 18px;">Resize your picture at: <a href="http://resizeyourimage.com" target="_blank">www.resizeyourimage.com</a></p>
+      <p style="font-size: 18px;" >Save the new picture as .png or .jpg</p>
+
+    </div>
+    <div class="col-md-6" >
+      <p style="font-size: 18px;">To host your picture online, go to: <a href="https://postimage.io/" target="_blank">www.postimage.io</a></p>
+      <p style="font-size: 18px;">Make sure to select "no expiration"</p>
+      <p style="font-size: 18px; ">Once the image is hosted, copy the "direct link"</p>
+    </div>
+    </div>
+  </div>
+  <br>
+
+</div>
+
+
+{% endblock %}
