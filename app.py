@@ -13,49 +13,50 @@ import time
 app = Flask(__name__)
 
 html_template = """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-      </head>
-
-      <body>
-        <div class="info" style=" padding: 8px 0 8px 8px; display: inline; font-family: Arial;">
-            <div style="line-height: 1.4; font-weight: bold; font-size: 16px; margin: 0;">{0} {1}</div>
-            <div style="line-height: 1.4; font-size: 14px; margin: 0 0 0 0; display: inline; color: #7f7c7c; ">{2}</div>
-            <div style=" " >
-              <img class="picture" src="{9}"  style="margin-bottom: -10px; margin-top: 10px;">
-            </div>
-            <p style="line-height: 1.6; font-size: 16px; margin: 20px 0 0 0;">{3}</p>
-            <p style="line-height: 1.6; font-size: 14px; margin: 0 0 0 0; display: inline;">{4}</p>
-            <br>
-            <br>
-            <div style="line-height: 1.6; font-weight: bold;  display: inline; font-size: 14px; color: #7f7c7c;">tel</div><div style="font-size: 14px; margin-left: 22px; display: inline;">{5}</div>
-            <br>
-            <div style="line-height: 1.6; font-weight: bold; display: inline; font-size: 14px;  color: #7f7c7c;">mob</div><div style="font-size: 14px; margin-left: 9px; display: inline;">{6}</div>
-            <br>
-            <div style="line-height: 1.6; font-weight: bold; display: inline; font-size: 14px;  color: #7f7c7c;">mail</div><div style="font-size: 14px; margin-left: 11px; display: inline;">{7}</div>
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title></title>
+  </head>
+  <body>
+    <div class="info" style=" padding: 8px 0 8px 8px; display: inline; font-family: Arial;">
+        <div style="line-height: 1.4; font-weight: bold; font-size: 16px; margin: 0;">{0} {1}</div>
+        <div style="line-height: 1.4; font-size: 14px; margin: 0 0 0 0; display: inline; color: #7f7c7c;">{2}</div>
+        <div>
+          <img class="picture" src="{9}"  style="margin-bottom: -10px; margin-top: 10px;">
         </div>
-
+        <p style="line-height: 1.6; font-size: 16px; margin: 20px 0 0 0;">{3}</p>
+        <p style="line-height: 1.6; font-size: 14px; margin: 0 0 0 0; display: inline;">{4}</p>
         <br>
         <br>
-
-        <div style="display: -webkit-flex; -webkit-flex-wrap: nowrap; display: flex; flex-wrap: nowrap;  ">
-          <div style=" " >
-            <img class="picture" src="{8}" alt="Antonela picture"   style="width:20vw; max-width:100px; margin-right:-2px; max-height: 136px; border-radius: 0 0 0 20px;">
-          </div>
-          <div style="">
-            <img class="banner" src="https://www.borna-koruznjak.from.hr/projects/signature-images/banner3.jpg" alt="Antonela picture" ; style="width:70vw;  max-width:350px; border-radius: 0 20px 20px 0; ">
-          </div>
-        </div>
-
-        <div style="display: block;">
-          <a style="text-decoration: none; color: black;" href="http://www.porscheinterauto.hr/"><div style= "font-family: Arial; font-size: 14px; margin-top: 5px;">www.porcheinterauto.hr</div></a>
-        </div>
-
-      </body>
-    </html>
+        <div style="line-height: 1.6; font-weight: bold; display: inline; font-size: 14px; color: #7f7c7c;">tel</div>
+        <div style="font-size: 14px; margin-left: 22px; display: inline;">{5}</div>
+        <br>
+        <div style="line-height: 1.6; font-weight: bold; display: inline; font-size: 14px; color: #7f7c7c;">mob</div>
+        <div style="font-size: 14px; margin-left: 9px; display: inline;">{6}</div>
+        <br>
+        <div style="line-height: 1.6; font-weight: bold; display: inline; font-size: 14px; color: #7f7c7c;">mail</div>
+        <div style="font-size: 14px; margin-left: 11px; display: inline;">{7}</div>
+    </div>
+    <br>
+    <br>
+    <div style="display: -webkit-flex; -webkit-flex-wrap: nowrap; display: flex; flex-wrap: nowrap;  ">
+      <div>
+        <img class="picture" src="{8}" alt="picture"
+             style="width:20vw; max-width:100px; margin-right:-2px; max-height: 136px; border-radius: 0 0 0 20px;">
+      </div>
+      <div>
+        <img class="banner" src="https://www.borna-koruznjak.from.hr/projects/signature-images/banner3.jpg"
+             alt="banner"; style="width:70vw; max-width:350px; border-radius: 0 20px 20px 0;">
+      </div>
+    </div>
+    <div style="display: block;">
+      <a style="text-decoration: none; color: black;" href="http://www.porscheinterauto.hr/"><div
+      style="font-family: Arial; font-size: 14px; margin-top: 5px;">www.porcheinterauto.hr</div></a>
+    </div>
+  </body>
+</html>
 """
 
 branches = [
