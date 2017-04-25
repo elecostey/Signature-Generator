@@ -1,7 +1,8 @@
 from flask import Flask
 from flask import request
 from flask import render_template
-import urllib, cStringIO
+import urllib
+import cStringIO
 from PIL import Image
 import httplib
 import urlparse
@@ -116,9 +117,34 @@ def get_user_input():
             branch_image_url = branch["url"]
             break
 
-    keys = ['name', 'surname', 'job_title', 'company_name', 'address', 'tel', 'mob', 'email', 'picture_url',
-            'branch_image_url', 'user_branch']
-    requests = [name, surname, job_title, company_name, address, tel, mob, email, picture_url, branch_image_url, user_branch]
+    keys = [
+        'name',
+        'surname',
+        'job_title',
+        'company_name',
+        'address',
+        'tel',
+        'mob',
+        'email',
+        'picture_url',
+        'branch_image_url',
+        'user_branch'
+    ]
+
+    requests = [
+        name,
+        surname,
+        job_title,
+        company_name,
+        address,
+        tel,
+        mob,
+        email,
+        picture_url,
+        branch_image_url,
+        user_branch
+    ]
+
     user_inputs = {}
     for i in range(len(keys)):
         user_inputs[keys[i]] = requests[i]
@@ -163,24 +189,24 @@ def url_is_image(url):
 
 
 def image_size_valid(url):
-    file = cStringIO.StringIO(urllib.urlopen(url).read())
-    im = Image.open(file)
+    user_file = cStringIO.StringIO(urllib.urlopen(url).read())
+    im = Image.open(user_file)
     width, height = im.size
     if width == 100 and height == 137:
         return True
     return False
 
 
-def check_passwords_match(password, input):
+def check_passwords_match(password, user_input):
     hashed = bcrypt.hashpw(password.encode('utf8'), bcrypt.gensalt())
-    if bcrypt.hashpw(input.encode('utf8'), hashed) == hashed:
+    if bcrypt.hashpw(user_input.encode('utf8'), hashed) == hashed:
         return True
     return False
 
 
-def render_template_with_error(tmpl_name, error_message):
+def render_template_with_error(template_name, error_message):
     if error_message == error_message1:
-        return render_template(tmpl_name,
+        return render_template(template_name,
                                name=get_user_input()['name'],
                                surname=get_user_input()['surname'],
                                job_title=get_user_input()['job_title'],
@@ -194,7 +220,7 @@ def render_template_with_error(tmpl_name, error_message):
                                picture=get_user_input()['picture_url'],
                                error=error_message)
 
-    return render_template(tmpl_name,
+    return render_template(template_name,
                            name=get_user_input()['name'],
                            surname=get_user_input()['surname'],
                            job_title=get_user_input()['job_title'],
