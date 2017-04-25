@@ -6,6 +6,7 @@ from PIL import Image
 import httplib
 import urlparse
 import bcrypt
+import time
 
 
 app = Flask(__name__)
@@ -170,6 +171,13 @@ def image_size_valid(url):
     return False
 
 
+def check_passwords_match(password, input):
+    hashed = bcrypt.hashpw(password.encode('utf8'), bcrypt.gensalt())
+    if bcrypt.hashpw(input.encode('utf8'), hashed) == hashed:
+        return True
+    return False
+
+
 def render_template_with_error(tmpl_name, error_message):
     if error_message == error_message1:
         return render_template(tmpl_name,
@@ -199,6 +207,7 @@ def render_template_with_error(tmpl_name, error_message):
                            user_branch=get_user_input()['user_branch'],
                            error=error_message)
 
+
 @app.route('/form')
 @app.route('/')
 @app.route('/preview')
@@ -210,11 +219,11 @@ def welcome():
 @app.route('/form', methods=['POST'])
 def access_form():
     password = '1234'
-    inputed_password = request.form['password']
+    input_password = request.form['password']
     error_message = 'The password is incorrect'
-    if password == inputed_password:
+    if check_passwords_match(password, input_password) is True:
+        time.sleep(0.5)
         return render_template("form.html")
-
     return render_template("welcome.html", error=error_message)
 
 
